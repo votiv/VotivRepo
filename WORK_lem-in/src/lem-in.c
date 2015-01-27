@@ -32,3 +32,15 @@ t_graph	create_graph(int n)
 	}
 	return (g);
 }
+
+void	graph_add_eddge(t_graph g, int u, int v)
+{
+	while (g->alist[u]->num_suc >= g->alist[u]->len)
+	{
+		g->alist[u]->len *= 2;
+		g->alist[u] = realloc(g->alist[u], sizeof(struct successors) + 
+			sizeof(int) * (g->alist[u]->len - 1));
+	}
+	g->alist[u]->list[g->alist[u]->num_suc++] = v;
+	g->m++;
+}
