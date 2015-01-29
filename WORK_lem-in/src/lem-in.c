@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem-in.h"
+#include "graph.h"
 
 /*creates a directed graph*/
 t_graph	create_graph(int n)

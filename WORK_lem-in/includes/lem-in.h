@@ -6,57 +6,46 @@
 /*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 16:03:17 by ovisky            #+#    #+#             */
-/*   Updated: 2015/01/27 16:42:47 by ovisky           ###   ########.fr       */
+/*   Updated: 2015/01/29 15:31:13 by ovisky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEMIN-IN_H
-# define LEMIN-IN_H
+#ifndef LEMIN_H
+# define LEMIN_H
 
-/* basic directed graph type
- * the implementation uses adjacency lists
- * represented as variable-length arrays
- *
- * these arrays may or may not be sorted: if one gets long enough
- * and you call graph_has_egde on its source, it will be
- */
-
+#include <stdio.h>
 #include <stdlib.h>
+#include "libft.h"
 
-typedef	struct		s_graph
+typedef	struct			s_room
 {
-	int		num_rooms;	/*number of rooms*/
-	int		num_tubes;	/*number of tubes*/
-	struct		successors
-	{
-		int	num_suc;	/*number of successors*/
-		int	len;		/*number of slots in array*/
-		char	is_sorted;	/*true if list is alredy sorted*/
-		int	list[1];	/*actual list of successors*/
-	}		*alist[1];
-}			t_graph;
+	char				*id;		/*the name of the room*/
+	char				*posx;		/*its x position*/
+	char				*posy;		/*its y position*/
+	int					num_of_lem;	/*number of lemmings currently in this room*/
+	int					is_start;
+	int					is_end;		/*0 = false, 1 = true*/
+	struct s_room		*next;
+}t_room_t,				*t_room_p;	/*t_room type, t_room pointer   ???  */
 
-/* graph.h in another way*/
-
-/* Adjacency list node*/
-typedef	struct	adjlist_node
+typedef	struct			s_adjlist
 {
-	int	vertex;			/*Index of adjacency lisst array*/
-	struct	adjlist_node	*next;	/*Pointer to the next node*/
-}adjlist_node_t, *adjlist_node_p;
+	int					num_members;	/*members in the list (for future use)*/
+	t_room_t			*head;			/*this probably is the same as the is_start in s_room*/
+}t_adjlist_t,			*t_adjlist_p;
 
-/* Adjacency list*/
-typedef	struct	adjlist
+typedef	struct			s_graps
 {
-	int	num_members;		/*number of members in the list (for future use)*/
-	adjlist_node_t	*head;		/*Head of the adjacency linked list*/
-}adjlist_t, *adjlist_p;
+	int					num_vertices;	/*number of tubes*/
+	t_adjlist_p			adjlist_arr;	/*adjacency lists' array*/
+}t_graph_t,				*t_graph_p;
 
-/* Graph sturcture. A graph is an array of adjacency lists.
- * Size of array will be number of vertices in graph*/
-typedef	struct	graph
+typedef	struct			s_lemming
 {
-//	graph_type_e	type;	/*this is an enum for decideing wether the graph is directed or not. i haven't implemented the enum*/
-	int	num_vertices;		/* Number of vertices*/
-	adjlist_p	adjListArr;	/*Adjacency lists' array*/
-}graph_t, *graph_p;
+	char				*name;
+	struct s_lemming	*next;
+	t_room_t			*room;
+	int					moves;
+}						t_lemming;
+
+#endif

@@ -3,27 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+         #
+#    By: ovisky <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/01/04 16:27:25 by wbeets            #+#    #+#              #
-#    Updated: 2014/02/21 02:14:55 by wbeets           ###   ########.fr        #
+#    Created: 2015/01/29 15:32:57 by ovisky            #+#    #+#              #
+#    Updated: 2015/01/29 15:33:00 by ovisky           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= lem-in
-FILES	= main.c\
-		  ft_get_data.c\
-		  ft_add_to_room_end.c\
-		  ft_add_connections_end.c\
-		  ft_make_connections.c\
-		  calc_routes_needed.c\
-		  ft_move.c\
-		  lem-in.c\
-		  ft_find_no_conflicts.c\
-		  ft_find_best.c\
-		  ft_create_lemmins.c\
-		  ft_move_lemmins.c\
-		  ft_simulate.c\
+FILES	=	graph.c
 
 SRC		= $(addprefix src/, $(FILES))
 OBJ		= $(SRC:src/%.c=.obj/%.o)
@@ -35,6 +23,7 @@ OK_COLOR=\x1b[32;01m
 ERROR_COLOR=\x1b[31;01m
 WARN_COLOR=\x1b[33;01m
 INCLUDE	= -I includes -I libft/includes
+DEB		= .deb/test
 
 all: $(NAME)
 
@@ -65,6 +54,11 @@ fclean: clean
 	@rm -rf $(DEB)
 	@make fclean -C libft/
 
+gdb:
+	@mkdir -p .deb/
+	@cc -o $(DEB) $(INCLUDE) $(DFLAGS) $(LIBCOM) $(SRC)
+	gdb $(DEB)
+
 lib:
 	@echo "\t---CHECKING LIBRARY---"
 	@make -C libft
@@ -76,4 +70,3 @@ relib:
 	@echo "$(OK_COLOR)\t---LIBRARY UP TO DATE---$(NO_COLOR)"
 
 re: fclean all
-
