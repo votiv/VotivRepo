@@ -6,7 +6,7 @@
 /*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:44:35 by ovisky            #+#    #+#             */
-/*   Updated: 2015/01/26 16:54:44 by ovisky           ###   ########.fr       */
+/*   Updated: 2015/01/30 16:25:47 by ovisky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,21 @@ void	ft_uonion(char *s, char *d)
 	i = 0;
 	while ((ch = tmp[i++]) != '\0')
 	{
-		//printf("double %c, index %d\n", ch, i-1);
 		j = i;
 		while (tmp[j] != '\0')
 		{
 			if (ch == tmp[j])
 			{
-				printf("%c %s %d\n", ch, "here", i - 1);
 				while (tmp[j] != '\0')
 				{
-					tmp[j] = tmp[j + 1];
-					printf("%s\n", tmp);
+					tmp[j] = tmp[j + 1];		
 					j++;
 				}
 				i--;
 				break;
 			}
 			j++;
-		}
-		//printf("%d\n", i);
+		}	
 	}
 	ft_putstr(tmp);
 }
