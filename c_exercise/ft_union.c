@@ -6,19 +6,11 @@
 /*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:44:35 by ovisky            #+#    #+#             */
-/*   Updated: 2015/01/30 16:25:47 by ovisky           ###   ########.fr       */
+/*   Updated: 2015/02/11 17:08:19 by ovisky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-
-/*
-char *strcat(char *dest, const char *src)
-{
-    strcpy(dest + strlen(dest), src);
-    return dest;
-}*/
 
 int		ft_strlen(char *str)
 {
