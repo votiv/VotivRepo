@@ -1,5 +1,5 @@
 NAME =		libft.a
-FILES =		ft_memdel.c\
+SOURCES =	ft_memdel.c\
 			ft_strnew.c\
 			ft_strclr.c\
 			ft_strdel.c\
@@ -12,28 +12,26 @@ FILES =		ft_memdel.c\
 			ft_strequ.c\
 			ft_strnequ.c\
 			ft_tolower.c\
-			ft_toupper.c\
-			main_libft.c
+			ft_putstr.c\
+			ft_putchar.c\
+			ft_toupper.c
 
-SOURCES = 	$(FILES)
-OBJECTS =	$(SOURCES:%.c=.obj/%.o)
+OBJECTS =	$(SOURCES:.c=.o)
 
 CC=gcc
-FLAGS =		-Wall -Werror -Wextra
+FLAGS =		-Wall -Werror -Wextra -pedantic
 INCLUDE =	-I.
-LIB =		-L -lft
 
 all:	$(NAME)
 
 $(NAME): $(OBJECTS) 
-		@$(CC) $(OBJECTS) $(INCLUDE) $(CFLAGS) -o $@
+		@ar rc $(NAME) $(OBJECTS)
 
-.obj/%.o: %.c
-		@mkdir -p .obj/
-		@gcc $(FLAGS) $(INCLUDE) -c $< -o $@
+%.o: %.c
+		@$(CC) -c $< -o $@ $(FLAGS) -I.
 
 clean:
-		@rm -rf .obj/
+		@rm -f $(OBJECTS)
 
 fclean:	clean
 		@rm -rf $(NAME)
