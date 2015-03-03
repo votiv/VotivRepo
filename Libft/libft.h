@@ -2,6 +2,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 char	*ft_strnew(size_t size);
 void	ft_memdel(void **ap);
@@ -17,5 +18,7 @@ int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	ft_putstr(char *s);
+void	ft_putchar(char c);
 
 #endif
