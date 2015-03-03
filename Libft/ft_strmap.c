@@ -1,13 +1,16 @@
+#include "libft.h"
+
 char	*ft_strmap(char const *s, char (*f)(char))
 {
+	int		i;
 	char	*ret;
 
 	if (s != NULL)
 	{
-		ret = malloc(sizeof(char) * ft_strlen(s) + 1);
+		ret = (char *)ft_memalloc(sizeof(*s) * ft_strlen(s));
 		if (ret == NULL)
 			return (NULL);
-		while (s)
+		while (*s)
 		{
 			ret[i] = f(s[i]);
 			i++;
