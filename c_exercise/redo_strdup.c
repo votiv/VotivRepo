@@ -43,13 +43,13 @@ char	*ft_strdup(const char *s)
 
 	len = ft_strlen(s);
 	d = malloc(sizeof(char) * len + 1);
-	i = -1;
-	while (s[++i] != '\0')
+	i = 0;
+	while (s[i] != '\0')
 	{
 		d[i] = s[i];
-//		i++;
+		i++;
 	}
-//	d[i] = '\0';
+	d[i] = '\0';
 	return (d);
 }
 
@@ -61,6 +61,7 @@ int		main(void)
 	src = "rofl";
 	dest = ft_strdup(src);
 	ft_putstr(dest);
+//	ft_putstr("lol");
 	write (1, "\n", 1);
 	return (0);
 }

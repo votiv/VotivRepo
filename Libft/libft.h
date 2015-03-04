@@ -20,5 +20,10 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	ft_putstr(char *s);
 void	ft_putchar(char c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strtrim(char const *s);
+int		ft_isspace(char c);
+char	*ft_strcpy(char *dest, const char *src);
 
 #endif

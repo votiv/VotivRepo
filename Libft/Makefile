@@ -14,6 +14,11 @@ SOURCES =	ft_memdel.c\
 			ft_tolower.c\
 			ft_putstr.c\
 			ft_putchar.c\
+			ft_strsub.c\
+			ft_strjoin.c\
+			ft_strtrim.c\
+			ft_isspace.c\
+			ft_strcpy.c\
 			ft_toupper.c
 
 OBJECTS =	$(SOURCES:.c=.o)

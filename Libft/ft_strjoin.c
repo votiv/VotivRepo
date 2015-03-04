@@ -6,7 +6,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	char	*ret;
 
-	ret = (char *) ft_memalloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1))
+	ret = (char *) ft_memalloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (ret == NULL)
 		return (NULL);
 	i = 0;
