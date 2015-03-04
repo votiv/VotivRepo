@@ -1,15 +1,15 @@
 NAME =		libft.a
-SOURCES =	ft_memdel.c\
-			ft_strnew.c\
-			ft_strclr.c\
-			ft_strdel.c\
-			ft_striter.c\
-			ft_striteri.c\
-			ft_strmap.c\
-			ft_strlen.c\
-			ft_memalloc.c\
-			ft_strmapi.c\
-			ft_strequ.c\
+SOURCES =	ft_memdel.c		ft_bzero.c\
+			ft_strnew.c		ft_isalnum.c\
+			ft_strclr.c		ft_isalpha.c\
+			ft_strdel.c		ft_isascii.c\
+			ft_striter.c	ft_isdigit.c\
+			ft_striteri.c	ft_isprint.c\
+			ft_strmap.c		ft_memccpy.c\
+			ft_strlen.c		ft_memchr.c\
+			ft_memalloc.c	ft_memcmp.c\
+			ft_strmapi.c	ft_memcpy.c\
+			ft_strequ.c		ft_memset.c\
 			ft_strnequ.c\
 			ft_tolower.c\
 			ft_putstr.c\
