@@ -83,7 +83,7 @@ char	*ft_refverse(char **s)
 	return (ret);
 }
 
-char	*ft_reverse(char **s) 
+void	ft_reverse(char **s) 
 {
 	int		i;
 	int		len;

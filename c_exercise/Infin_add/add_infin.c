@@ -3,7 +3,9 @@
 static char	*to_string(int *sum, int len)
 {
 	int		i;
+	int		j;
 	char	*ret;
+	char	*tmp;
 
 	i = 0;
 	ret = (char *)ft_memalloc(sizeof(*ret) * len);
@@ -14,13 +16,29 @@ static char	*to_string(int *sum, int len)
 	}
 	ret[i] = '\0';
 	ft_reverse(&ret);
-	return (ret);
+	i = 0;
+	while (ret[i] == 48)
+		i++;
+	j = 0;
+	tmp = (char *)ft_memalloc(sizeof(*tmp) * len);
+	while (ret[i] != '\0')
+	{
+		tmp[j] = ret[i];
+		j++;
+		i++;
+	}
+	return (tmp);
 }
 
 static void	print_sum(char *sum, int sign)
 {
 	int		i;
 
+	if (sum[0] == '\0')
+	{
+		ft_putstr("0\n");
+		return ;
+	}
 	i = 0;
 	if (sign == 1 || sign == -1 || sign == -3)
 		ft_putstr("-");
@@ -29,6 +47,7 @@ static void	print_sum(char *sum, int sign)
 		write (1, &sum[i], 1);
 		i++;
 	}
+	write (1, "\n", 1);
 }
 
 static void	init_arrays(int n1[], int n2[], char *num1, char *num2, int len)
@@ -155,7 +174,6 @@ int			main(int ac, char **av)
 	determine_sign(av[1], av[2], &sign);
 	num1 = strip_minus(av[1]);
 	num2 = strip_minus(av[2]);
-	printf("%s  %s - %d\n", num1, num2, sign);
 	len = ((ft_strlen(num1) > ft_strlen(num2)) ? ft_strlen(num1) : ft_strlen(num2));
 	if (sign >= 0)
 	{
