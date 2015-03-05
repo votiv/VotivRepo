@@ -27,6 +27,7 @@ static char	*to_string(int *sum, int len)
 		j++;
 		i++;
 	}
+	tmp[j] = '\0';
 	return (tmp);
 }
 
@@ -76,7 +77,6 @@ static void	init_arrays(int n1[], int n2[], char *num1, char *num2, int len)
 			n1[i] = 0;
 			i++;
 		}
-		//n1[i] = NULL;
 	}
 	else
 	{
@@ -86,7 +86,6 @@ static void	init_arrays(int n1[], int n2[], char *num1, char *num2, int len)
 			n2[i] = 0;
 			i++;
 		}
-		//n2[i] = NULL;
 	}
 }
 
