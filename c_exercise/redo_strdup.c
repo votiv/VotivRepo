@@ -1,67 +1,56 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   redo_strdup.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 17:29:53 by ovisky            #+#    #+#             */
-/*   Updated: 2015/02/11 17:55:19 by ovisky           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 
-int		ft_strlen(const char *str)
+static int	ft_strlen(char *s)
 {
 	int		len;
 
 	len = 0;
-	while (str[len] != '\0')
+	while (s[len] != '\0')
 		len++;
 	return (len);
 }
 
-void	ft_putstr(const char *s)
+static void	*ft_memalloc(size_t size)
 {
-	int		i;
+	size_t	i;
+	char	*ret;
 
-	i = 0;
-	while (s[i] != '\0')
+	ret = (char *) malloc(size);
+	if (ret != NULL)
 	{
-		write (1, &s[i], 1);
-		i++;
+		i = 0;
+		while (i < size)
+		{
+			ret[i] = 0;
+			i++;
+		}
 	}
+	return ((void *)ret);
 }
 
-char	*ft_strdup(const char *s)
+static char	*ft_strdup(char *src)
 {
-	char	*d;
+	int		i;
 	int		len;
-	int		i;
+	char	*ret;
 
-	len = ft_strlen(s);
-	d = malloc(sizeof(char) * len + 1);
+	len = ft_strlen(src);
+	ret = (char *) ft_memalloc(sizeof(*ret) * (len + 1));
 	i = 0;
-	while (s[i] != '\0')
-	{
-		d[i] = s[i];
+	while ((ret[i] = src[i]) != '\0')
 		i++;
-	}
-	d[i] = '\0';
-	return (d);
+	return (ret);
 }
 
-int		main(void)
+int		main()
 {
-	const char	*dest;
-	char		*src;
+	char	*s;
+	char	*d;
 
-	src = "rofl";
-	dest = ft_strdup(src);
-	ft_putstr(dest);
-//	ft_putstr("lol");
-	write (1, "\n", 1);
+	s = (char *) ft_memalloc(15);
+	s = "rofl";
+	d = ft_strdup(s);
+	printf("%s\n", d);
 	return (0);
 }
