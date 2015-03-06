@@ -1,29 +1,49 @@
 #include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+static char	**init_matrix(int len)
+{
+	int		i;
+	char	**ret;
+
+	i = 0;
+	ret = (char **) ft_memalloc(sizeof(*ret) * (len));
+	while (i < len)
+	{
+		ret[i] = (char *) ft_memalloc(sizeof(*ret) * len);
+		i++;
+	}
+	return (ret);
+}
+
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**ret;
 	int		i;
 	int		j;
 	int		k;
+	int		n;
 
-	ret = (char **) ft_memalloc(sizeof(*ret) * (100 + 1));
-	if (s[0] == c)
-		i = 1;
-	else
-		i = 0;
-	while (s[i] != c && s[i] != '\0')
+	ret = init_matrix(ft_strlen(s));
+	i = 0;
+	k = -1;
+	while (s[i] != '\0')
 	{
-		j = 0;
-		if (s[i] == c)
+		if (s[i] != c)
 		{
-			while (s[i] == c)
-				i++;
 			k++;
-			j = 0;
+			j = i;
+			n = 0;
+			while (s[j] != c)
+			{
+				ret[k][n] = s[j];
+				j++;
+				n++;
+			}
+			ret[k][n] = '\0';
+			i += j;
 		}
-		ret[k][j] = s[i];
-		j++;
+		i++;
 	}
+	ret[k] = '\0';
 	return (ret);
 }

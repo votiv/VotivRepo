@@ -15,25 +15,35 @@
 	}
 }
 */
+static char **init_matrix(int len)
+{
+    int     i;
+    char    **ret;
 
+    i = 0;
+    ret = (char **) ft_memalloc(sizeof(*ret) * (len));
+    while (i < len)
+    {
+        ret[i] = (char *) ft_memalloc(sizeof(*ret) * len);
+        i++;
+    }
+    return (ret);
+}
 
 int		main(void)
 {
 	char	**s;
+    char    *d;
     int     i;
-    int     j;
 
-    s = (char **) ft_memalloc(sizeof(s) * (100));
-    s = ft_strsplit("this is going to work", ' ');
+    d = (char *) ft_memalloc(sizeof(d) * 22);
+    d = "this is going to work";
+    s = init_matrix(100);
+    s = ft_strsplit(d, 32);
     i = 0;
     while (s[i] != '\0')
     {
-        j = 0;
-        while (s[i][j] != '\0')
-        {
-            printf("%c\n", s[i][j]);
-            j++;
-        }
+        printf("%s\n", s[i]);
         i++;
     }
 	return (0);

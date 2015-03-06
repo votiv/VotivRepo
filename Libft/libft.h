@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 char	*ft_strnew(size_t size);
 void	ft_memdel(void **ap);
