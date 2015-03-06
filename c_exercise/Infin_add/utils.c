@@ -62,27 +62,6 @@ void	*ft_memalloc(size_t size)
 	return ((void *)ret);
 }
 
-char	*ft_refverse(char **s)
-{
-	int		i;
-	int		len;
-	char	*ret;
-
-	printf("reverse: %s\n", *s);
-	i = 0;
-	len = ft_strlen(*s);
-	ret = (char *) ft_memalloc(sizeof(*ret) * (len));
-	while (i < len)
-	{
-		ret[i] = *s[len - 1];
-		i++;
-		len--;
-	}
-	ret[i] = '\0';
-	printf("reversed: %s\n", ret);
-	return (ret);
-}
-
 void	ft_reverse(char **s) 
 {
 	int		i;

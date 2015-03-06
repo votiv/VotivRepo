@@ -51,7 +51,7 @@ static void	print_sum(char *sum, int sign)
 	write (1, "\n", 1);
 }
 
-static void	init_arrays(int n1[], int n2[], char *num1, char *num2, int len)
+static void	init_arrays(int n1[], int n2[], char *num1, char *num2)
 {
 	int		i;
 
@@ -97,7 +97,7 @@ static char	*ft_add(char *num1, char *num2, int len)
 	int		n2[9999];
 	int		*sum;
 
-	init_arrays(n1, n2, num1, num2, len);
+	init_arrays(n1, n2, num1, num2);
 	sum = (int *)ft_memalloc(sizeof(*sum) * (len + 1));
 	i = 0;
 	ten = 0;
@@ -128,7 +128,7 @@ static char	*ft_sub(char *num1, char *num2, int len)
 	int		n2[9999];
 	int		*sum;
 
-	init_arrays(n1, n2, num1, num2, len);
+	init_arrays(n1, n2, num1, num2);
 	sum = (int *)ft_memalloc(sizeof(*sum) * (len + 1));
 	i = 0;
 	ten = 0;
@@ -155,11 +155,34 @@ static void	determine_sign(char *s, char *d, int *sign)
 	if (s[0] == '-' && d[0] == '-')
 		*sign = 1;
 	else if (s[0] == '-' && ft_isdigit(d[0]))
-		*sign =  ((ft_strlen(strip_minus(s)) >= ft_strlen(d)) ? -1 : -2);
+		*sign =  ((ft_strlen(strip_minus(s)) > ft_strlen(d)) ? -1 : -2);
 	else if (ft_isdigit(s[0]) && d[0] == '-')
-		*sign = ((ft_strlen(strip_minus(d)) >= ft_strlen(s)) ? -3 : -4);
+		*sign = ((ft_strlen(strip_minus(d)) > ft_strlen(s)) ? -3 : -4);
 	else
 		*sign = 0;
+}
+
+static int	greater_number(char *n1, char *n2)
+{
+	int		i;
+
+	if (ft_strlen(n1) > ft_strlen(n2))
+		return (1);
+	else if (ft_strlen(n1) < ft_strlen(n2))
+		return (2);
+	else
+	{
+		i = 0;
+		while (n1[i] != '\0')
+		{
+			if (n1[i] > n2[i])
+				return (1);
+			else if (n1[i] < n2[i])
+				return (2);
+			i++;
+		}
+	}
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -170,6 +193,7 @@ int			main(int ac, char **av)
 	char	*num1;
 	char	*num2;
 
+	(void) ac;
 	determine_sign(av[1], av[2], &sign);
 	num1 = strip_minus(av[1]);
 	num2 = strip_minus(av[2]);
@@ -180,10 +204,16 @@ int			main(int ac, char **av)
 	}
 	else if (sign < 0)
 	{
-		if (ft_strlen(strip_minus(num1)) >= ft_strlen(strip_minus(num2)))
+		if (greater_number(num1, num2) == 1)
+			sum = ft_sub(num1, num2, len);
+		else if (greater_number(num1, num2) == 2)
+			sum = ft_sub(num2, num1, len);
+		else
+			sum = "0";
+		/*if (ft_strlen(num1) >= ft_strlen(num2))
 			sum = ft_sub(num1, num2, len);
 		else
-			sum = ft_sub(num2, num1, len);
+			sum = ft_sub(num2, num1, len);*/
 	}
 	else
 		ft_putstr("Error!\n");
