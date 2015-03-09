@@ -11,9 +11,9 @@ SOURCES =	ft_memdel.c		ft_bzero.c\
 			ft_strmapi.c	ft_memcpy.c\
 			ft_strequ.c		ft_memset.c\
 			ft_strnequ.c	ft_strsplit.c\
-			ft_tolower.c\
-			ft_putstr.c\
-			ft_putchar.c\
+			ft_tolower.c	ft_putendl.c\
+			ft_putstr.c		ft_putnbr.c\
+			ft_putchar.c	ft_reverse.c\
 			ft_strsub.c\
 			ft_strjoin.c\
 			ft_strtrim.c\
