@@ -1,4 +1,6 @@
 .inputrc
+
+*.a
 *.exe
 *.o
 *.gch
