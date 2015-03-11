@@ -6,7 +6,7 @@
 /*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/14 12:57:11 by ovisky            #+#    #+#             */
-/*   Updated: 2014/11/14 12:57:12 by ovisky           ###   ########.fr       */
+/*   Updated: 2015/03/11 16:18:16 by ovisky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memccpy(void *dest, void *src, int c, size_t n)
 
 	d = dest;
 	s = src;
-	while(n--)
+	while (n--)
 	{
 		if ((*d++ = *s++) == c)
 			return (d);

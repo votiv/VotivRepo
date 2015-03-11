@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/03/11 16:27:03 by ovisky            #+#    #+#             */
+/*   Updated: 2015/03/11 16:27:03 by ovisky           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnew(size_t size)
 {
 	char			*ret;
-	
-	ret = (char *) ft_memalloc(sizeof(char) * (size + 1));
+
+	ret = (char *)ft_memalloc(sizeof(char) * (size + 1));
 	return (ret);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/03/11 16:27:12 by ovisky            #+#    #+#             */
+/*   Updated: 2015/03/11 16:27:14 by ovisky           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char	**alloc_tab(const char *s, char c)
@@ -19,11 +31,11 @@ static char	**alloc_tab(const char *s, char c)
 			word_found = 0;
 		}
 		if (s[i] != c)
-		word_found = 1;
+			word_found = 1;
 		i++;
 	}
 	if (word_found)
-	word_number++;
+		word_number++;
 	return ((char **)malloc(sizeof(char *) * (word_number + 1)));
 }
 

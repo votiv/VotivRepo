@@ -1,6 +1,9 @@
 .inputrc
+.DS_Store
 
 *.a
 *.exe
 *.o
+*.out
 *.gch
+*.swp
