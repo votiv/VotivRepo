@@ -1,23 +1,15 @@
 #!C:\Users\othniel.visky\git\votiv_repo\PHP_binary\php.exe
 <?php
 
-function get_text_from_tag($string)
-{
-    $pattern = "/\<a ?.*>(\s*.*\s*)\</";
-    preg_match($pattern, $string, $matches);
-    print_r($matches);
-    $string = preg_replace("/$matches[1]/", strtoupper($matches[1]), $string);
-    return $string;
-}
-
-$file = file('page.html');
+$pattern = "/(?<=title=\")(.*)(?=\")/i";
+$file = file_get_contents($argv[1]);
+$string = preg_replace_callback($pattern,
+	function ($matches)
+	{
+		return (strtoupper($matches[1]));
+	}, $file);
 
 
-
-foreach ($file as $line)
-{
-	echo get_text_from_tag($line);
-}
-
+echo $string;
 
 ?>
