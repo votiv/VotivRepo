@@ -1,6 +1,7 @@
+#!C:\Users\othniel.visky\git\votiv_repo\PHP_binary\php.exe
 <?php
 
-$name = $_SERVER['QUERY_STRING'];
+/*$name = $_SERVER['QUERY_STRING'];
 
 $tab = explode('&', $name);
 print_r($tab);
@@ -32,10 +33,10 @@ switch ($mode)
 }
 print_r($arr);
 
-/*<?php
+*/
 
-$name = $_SERVER['QUERY_STRING'];
-
+$data = $_SERVER['QUERY_STRING'];
+echo $data;
 
 
 // set the cookies
@@ -51,8 +52,5 @@ if (isset($_COOKIE['cookie'])) {
         echo "$name : $value <br />\n";
     }
 }
-
-?>
-*/
 
 ?>
