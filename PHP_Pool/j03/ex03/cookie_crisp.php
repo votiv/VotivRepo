@@ -36,7 +36,7 @@ print_r($arr);
 */
 
 $data = $_SERVER['QUERY_STRING'];
-echo $data;
+print_r($data);
 
 
 // set the cookies
