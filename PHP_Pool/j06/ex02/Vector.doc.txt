@@ -1,0 +1,28 @@
+<- Vector ----------------------------------------------------------------------
+
+The Vector class handles vectors in space.
+
+A Vector can be constructed if we provide a dest and an orig Vertex.
+If orif isn't provided it will be set to (0, 0, 0, 1) by default.
+
+The Vector class provide the following methods:
+
+float magnitude(): get the magnitude of the Vector.
+
+Vector normalize(): return a new instance of the normalized Vector or a clone if the Vector is already normalized.
+
+Vector add(Vector $rhs): add two Vectors.
+
+Vector sub(Vector $rhs): substract two vectors.
+
+Vector opposite(): returns the opposite vector.
+
+Vector scalarProduct($k): returns the product of a Vector and a scalar.
+
+Vector dotProduct(Vector $rhs): returns the scalar product of two Vectors.
+
+float cos(Vector $rhs): returns the cosinus of the angle made up by two Vectors.
+
+Vector crossProduct(Vector $rhs): returns the vectorial product of two Vectors.
+
+---------------------------------------------------------------------- Vector ->
