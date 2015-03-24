@@ -7,12 +7,6 @@ Class Color
 	public $green = 0;
 	public $blue= 0;
 
-	public static function doc()
-	{
-		print (file_get_contents('./Color.doc.txt'));
-		return ;
-	}
-
 	public function __construct (array $kwargs)
 	{
 		if (array_key_exists('red', $kwargs))
@@ -42,6 +36,12 @@ Class Color
 	public function __toString()
 	{
 		return (sprintf('Color( red: %3d, green: %3d, blue: %3d )', $this->red, $this->green, $this->blue));
+	}
+
+	public static function doc()
+	{
+		print (file_get_contents('./Color.doc.txt'));
+		return ;
 	}
 
 	public function add(Color $instance)

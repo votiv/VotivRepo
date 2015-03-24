@@ -1,0 +1,9 @@
+<- Vertex ----------------------------------------------------------------------
+
+The Vertex class handles points in 3D.
+
+A Vertex can be constructed by providing three homogeneous coordinates x, y and z. The fourth - w - is optional
+and is set by default to 1.
+Providing a color for the Vertex is alsp optional; if missing 255,255,255 will be set as default.
+
+---------------------------------------------------------------------- Vertex ->
