@@ -3,11 +3,9 @@
 int		main()
 {
 	char	*tmp;
-	int		len;
 	
-	len = 8;
-	tmp = (char *) ft_memalloc(sizeof(*tmp) * len);
-	tmp = ft_memset(tmp, 'K', len);
+	tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
+	tmp = ft_memset(tmp, 'K', 8);
 	printf("string: %s \n", tmp);
 	return 0;
 }
