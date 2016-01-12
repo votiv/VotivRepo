@@ -10,14 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strcat(char *dest, const char *src)
 {
-	char	*ret;
+	size_t	i;
+	size_t	j;
 	
-	ret = dest;
-	while (*dest)
-		dest++;
-	while ((*dest++ = *src++))
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while ((dest[i++] = src[j++]) != '\0')
 		;
-	return ret;
+	printf("%d\n", (int) i);
+	//dest[i + j] = '\0';
+	return dest;
 }

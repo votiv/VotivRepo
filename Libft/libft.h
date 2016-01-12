@@ -57,7 +57,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 char				*ft_strcpy(char *dest, const char *src);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_strcat(char *dest, char *src);
+char				*ft_strcat(char *dest, const char *src);
 char				*ft_strchr(const char *s, int c);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 char				*ft_strncat(char *dest, char *src, int n);
