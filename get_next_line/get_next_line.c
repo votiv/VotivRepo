@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ovisky <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/08/13 17:03:09 by ovisky            #+#    #+#             */
-/*   Updated: 2014/08/13 17:03:09 by ovisky           ###   ########.fr       */
+/*   Created: 2016/01/06 16:22:23 by ovisky            #+#    #+#             */
+/*   Updated: 2016/01/06 16:22:24 by ovisky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, const char *src)
-{
-	char	*ret;
+#include "get_next_line.h"
+
+int				get_next_line(int fd, char **line) {
 	
-	ret = dest;
-	while (*dest)
-		dest++;
-	while ((*dest++ = *src++))
-		;
-	return ret;
+//	int		i;
+	int		ret;
+	char	*buff;
+	
+	if (fd < 0 || !line)
+		return (-1);
+//	i = 0;
+	buff = (void *) malloc(sizeof(*buff) * BUFF_SIZE);
+	while ((ret = read(fd, buff, BUFF_SIZE)) != 0) {
+		if (!(ft_strchr(buff, '\n'))) {
+//			printf("buff --- %s", buff);
+			*line = ft_strdup(buff);
+		}
+	}
+	printf("line = %s", *line);
+	return 0;
 }
