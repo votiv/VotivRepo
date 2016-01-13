@@ -12,16 +12,15 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	char	*ret;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	while (i >= 0)
+	ret = (char *) s;
+	while (*ret != '\0')
+		ret++;
+	while (ret--)
 	{
-		if (*s == c)
-			return ((char*)s);
-		i--;
+		if (*ret == c)
+			return (ret);
 	}
-	return ((char *)0);
+	return (0);
 }

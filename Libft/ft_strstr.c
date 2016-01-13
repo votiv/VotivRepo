@@ -10,25 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int		i;
-	int		j;
+#include "libft.h"
 
-	if (to_find[0] == '\0')
-		return (str);
-	i = 0;
-	while (str[i] != '\0')
+char	*ft_strstr(const char *str, const char *to_find)
+{
+	char	*needle;
+	char 	*haystack;
+	char	*haystack_adv;
+	char	*haystack_begin;
+
+	if (*to_find == '\0')
+		return ((char *) str);
+	needle = (char *) to_find;
+	haystack = (char *) str;
+	haystack_adv = (char *) str;
+	while (*++needle)
+		haystack_adv++;
+	while (*haystack_adv)
 	{
-		if (str[i] == to_find[0])
+		haystack_begin = haystack;
+		needle = (char *) to_find;
+		while (*haystack && *needle && (*haystack == *needle))
 		{
-			j = 0;
-			while (str[i] == to_find[j] || to_find[j] != '\0')
-				j++;
-			if (to_find[j] == '\0')
-				return (str + i);
+			haystack++;
+			needle++;
 		}
-		i++;
+		if (!*needle)
+			return haystack_begin;
+		haystack = haystack_begin + 1;
+		haystack_adv++;
 	}
-	return ('\0');
+	return NULL;
 }

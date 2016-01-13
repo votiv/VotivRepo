@@ -10,27 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t n)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	size_t	i;
-	int		j;
+	char	*needle;
+	char 	*haystack;
+	char	*partial;
 
-	if (to_find[0] == '\0')
-		return (str);
-	i = 0;
-	while (str[i] != '\0' && i <= n)
+	if (*to_find == '\0')
+		return ((char *) str);
+	needle = (char *) to_find;
+	haystack = (char *) str;
+	if (ft_strlen(to_find) <= n)
 	{
-		if (str[i] == to_find[0])
-		{
-			j = 0;
-			while (str[i] == to_find[j] || to_find[j] != '\0')
-				j++;
-			if (to_find[j] == '\0')
-				return (str + i);
-		}
-		i++;
+		return ft_strstr(haystack, needle);
 	}
-	return (0);
+	else
+	{
+		partial = (char *) ft_memalloc(sizeof(*partial) * (n + 1));
+		partial = ft_memcpy(partial, needle, n);
+		partial[n] = '\0';
+		return ft_strstr(haystack, partial);
+	}
+	return NULL;
 }

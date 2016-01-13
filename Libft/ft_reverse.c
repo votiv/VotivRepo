@@ -15,8 +15,8 @@
 char	*ft_reverse(char *s)
 {
 	char	*ret;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	ret = (char *)ft_memalloc(sizeof(*ret) * (ft_strlen(s) + 1));
 	i = 0;
