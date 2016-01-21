@@ -14,7 +14,8 @@
 
 void	ft_strclr(char *s)
 {
-	char	*tmp;
+	char	*tmp = 0;
+	int		i;
 
 	if (s != NULL)
 	{
@@ -22,8 +23,8 @@ void	ft_strclr(char *s)
 		*tmp = *s;
 		while (*tmp != '\0')
 		{
-			*tmp = '\0';
-			tmp++;
+			tmp[i] = '\0';
+			i++;
 		}
 	}
 }
