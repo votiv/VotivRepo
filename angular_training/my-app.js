@@ -1,4 +1,4 @@
-angular
+var myApp = angular
 	.module("my-app", [
 		'ui.router'
 	])
@@ -8,6 +8,10 @@ angular
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'template/home.html'
+				templateUrl: 'templates/home.html'
 			})
+            .state('about', {
+                url: '/about',
+                templateUrl: 'templates/about.html'
+            })
 	}]);
