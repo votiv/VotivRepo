@@ -2,9 +2,9 @@
 
 int		main()
 {
-	char	*tmp;
+	char	*tmp = 0;
 
-	tmp = ft_strnew(BUFF_SIZE);
+	//tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
 	tmp = "Be cleared heathen!";
 	ft_strclr(tmp);
 	if (tmp == NULL)

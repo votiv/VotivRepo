@@ -18,7 +18,8 @@ void	ft_strclr(char *s)
 
 	if (s != NULL)
 	{
-		tmp = s;
+		tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
+		*tmp = *s;
 		while (*tmp != '\0')
 		{
 			*tmp = '\0';
