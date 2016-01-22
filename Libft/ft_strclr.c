@@ -14,17 +14,12 @@
 
 void	ft_strclr(char *s)
 {
-	char	*tmp = 0;
-	int		i;
-
 	if (s != NULL)
 	{
-		tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
-		*tmp = *s;
-		while (*tmp != '\0')
+		while (*s != '\0')
 		{
-			tmp[i] = '\0';
-			i++;
+			*s = '\0';
+			s++;
 		}
 	}
 }

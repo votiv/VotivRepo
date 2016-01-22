@@ -2,10 +2,10 @@
 
 int		main()
 {
-	char	*tmp = 0;
+	char	tmp[] = "Be cleared heathen!";
 
 	//tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
-	tmp = "Be cleared heathen!";
+	printf("OK\n");
 	ft_strclr(tmp);
 	if (tmp == NULL)
 		printf("ERROR! At this point the string shouldn't be NULL!\n");
