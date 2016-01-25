@@ -1,34 +1,32 @@
 #include "libft.h"
 
-void	x_putchar(unsigned int i, char *s);
+void	x_function(unsigned int i, char *s);
+void	y_function(char *s);
 
 int		main()
 {
-	char	*tmp;
-	int		i;
+	char	tmp[] = "LOL ROFLT !23! abc +";
 
-	tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
-	tmp = "LOL ROFLT !23! abc +";
-	//ft_striter(tmp, ft_putstr);
-	//printf("\n");
+	ft_striter(tmp, y_function);
+	printf("%s\nafter iter\n", tmp);
 
-	while (i < (int) ft_strlen(tmp))
-	{
-		ft_striteri(tmp, x_putchar);
-		i++;
-	}
-	printf("here %s\n", tmp);
+	ft_striteri(tmp, x_function);
+	printf("%s\n", tmp);
 	return 0;
 }
 
-void	x_putchar(unsigned int i, char *s)
+void	x_function(unsigned int i, char *s)
 {
-	char	*tmp;
-
-	tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
-	*tmp = *s;
-	if (tmp[i] >= 65 && tmp[i] <= 90)
+	if (s[i] >= 97 && s[i] <= 122)
 	{
-		tmp[i] += 32;
+		s[i] -= 32;
+	}
+}
+
+void	y_function(char *s)
+{
+	if (*s >= 65 && *s <= 90)
+	{
+		*s += 32;
 	}
 }
