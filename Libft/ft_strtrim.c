@@ -20,7 +20,9 @@ char	*ft_strtrim(char const *s)
 
 	if (s != NULL)
 	{
-		ret = (char *)ft_memalloc(sizeof(*s) * ft_strlen(s));
+		ret = (char *) ft_memalloc(sizeof(*s) * ft_strlen(s));
+		if (ret == NULL)
+			return NULL;
 		len = ft_strlen(s) - 1;
 		i = 0;
 		if (!ft_isspace(s[i]) && !ft_isspace(s[len]))

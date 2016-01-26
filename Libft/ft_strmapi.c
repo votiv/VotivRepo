@@ -20,12 +20,15 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (s != NULL)
 	{
 		ret = (char *)ft_memalloc(sizeof(*s) * ft_strlen(s));
+		if (ret == NULL)
+			return NULL;
 		i = 0;
-		while (i < (unsigned int)ft_strlen(s))
+		while (s[i] != '\0')
 		{
 			ret[i] = f(i, s[i]);
 			i++;
 		}
 	}
+	ret[i] = '\0';
 	return (ret);
 }

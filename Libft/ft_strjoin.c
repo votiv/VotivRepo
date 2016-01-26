@@ -19,8 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		len;
 	char	*ret;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	ret = (char *)ft_memalloc(sizeof(*s1) * (len + 1));
+	len = ft_strlen(s1) + ft_strlen(s2) - 1;
+	ret = (char *)ft_memalloc(sizeof(*s1) * len);
 	if (ret == NULL)
 		return (NULL);
 	i = 0;
