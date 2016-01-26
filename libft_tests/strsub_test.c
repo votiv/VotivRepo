@@ -22,7 +22,7 @@ int		main()
 	join = ft_strjoin(tmp, sub);
 	if (!ft_strequ(join, expected2))
 	{
-		printf("ERROR! Expected: %s, actual: %s\n", expected, sub);
+		printf("ERROR! Expected: %s, actual: %s\n", expected2, join);
 	}
 	else
 	{
