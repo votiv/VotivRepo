@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*nod;
 
-	nod = (t_list *)ft_memalloc(sizeof(*nod));
+	nod = (t_list *) ft_memalloc(sizeof(*nod));
 	if (nod == NULL)
 		return (NULL);
 	if (content == NULL)
@@ -26,11 +26,15 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(nod->content = ft_memdup(content, content_size)))
+		printf("simple cont: %s\n", (char *) content);
+		nod->content = ft_memdup(content, content_size);
+		printf("nod cont: %s\n", (char *) nod->content);
+		if (nod->content == NULL)
 		{
 			return (NULL);
 			free(nod);
 		}
+		printf("nod: %s\n", (char *) nod->content);
 		nod->content_size = content_size;
 	}
 	nod->next = NULL;
