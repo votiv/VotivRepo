@@ -27,7 +27,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		printf("simple cont: %s\n", (char *) content);
-		nod->content = ft_memdup(content, content_size);
+		nod->content = memcpy(nod->content, content, content_size);
 		printf("nod cont: %s\n", (char *) nod->content);
 		if (nod->content == NULL)
 		{

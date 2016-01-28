@@ -6,10 +6,12 @@ int		main()
 {
 	t_list	*list = NULL;
 	char	*tmp;
+	int		size;
 
 	tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
 	tmp = "content 42";
-	list = ft_lstnew(tmp, ft_strlen(tmp));
+	size = ft_strlen(tmp) * (int) sizeof(*tmp);
+	list = ft_lstnew(tmp, size);
 	printf("one\n");
 	printf("cont: %s\n", (char *) list->content);
 	print_lst(list);

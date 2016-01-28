@@ -11,6 +11,8 @@ int		main()
 	src = "Go home!";
 	actual = ft_memcpy(actual, src, 8);
 	expected = memcpy(expected, src, 8);
+	printf("actual: %s\n", actual);
+	printf("expected: %s\n", expected);
 	if (ft_memcmp(actual, expected, ft_strlen(src)) == 0)
 		printf("OK\n");
 	else
