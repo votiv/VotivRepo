@@ -10,9 +10,4 @@ var meanApp = angular.module('meanApp', [
 				templateUrl: 'templates/home.html',
 				controller: 'HomeController'
             });
-	}])/*
-    .controller('HomeController', ['$scope', function ($scope) {
-        console.log('something');
-        $scope.date = new Date();
-        console.log($scope);
-    }])*/;
+	}]);

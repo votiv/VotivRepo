@@ -4,7 +4,5 @@
 'use strict';
 
 meanApp.controller('HomeController', ['$scope', function ($scope) {
-        console.log('something');
         $scope.date = new Date();
-        console.log($scope);
     }]);
