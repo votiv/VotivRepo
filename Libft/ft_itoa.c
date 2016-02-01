@@ -38,7 +38,7 @@ static int	check_num(int n, int *sign, char **ret)
 {
 	if (n == 0)
 		*ret = "0";
-	else if (n == -2147483648)
+	else if (n == (-2147483647 - 1))
 		*ret = "-2147483648";
 	else if (n < 0)
 	{
