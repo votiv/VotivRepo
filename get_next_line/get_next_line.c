@@ -12,22 +12,24 @@
 
 #include "get_next_line.h"
 
-int				get_next_line(int fd, char **line) {
-	
-//	int		i;
+int		get_next_line(int fd, char **line)
+{	
 	int		ret;
-	char	*buff;
-	
-	if (fd < 0 || !line)
-		return (-1);
-//	i = 0;
-	buff = (void *) malloc(sizeof(*buff) * BUFF_SIZE);
-	while ((ret = read(fd, buff, BUFF_SIZE)) != 0) {
-		if (!(ft_strchr(buff, '\n'))) {
-//			printf("buff --- %s", buff);
-			*line = ft_strdup(buff);
+	char	*tmp;
+
+	tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE);
+	ret = read(fd, *line, 8);
+	if (ret != -1)
+	{
+		tmp = ft_strcat(tmp, *line);
+	}
+	while ((ret = read(fd, *line, 1)) != -1)
+	{
+		if (**line != '\n' || **line != '\0')
+		{
+			tmp = ft_strjoin(tmp, *line);
 		}
 	}
-	printf("line = %s", *line);
+	printf("line: %s, ret: %d\n", tmp, ret);
 	return 0;
 }
