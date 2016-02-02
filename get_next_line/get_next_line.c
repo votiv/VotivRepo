@@ -12,39 +12,16 @@
 
 #include "get_next_line.h"
 
-static void			append_line(char **str, char **s_str)
-{
-	char	*tmp1;
-	char	*tmp2;
-
-	tmp2 = NULL;
-	tmp1 = NULL;
-	if (*str && **str)
-	{
-		tmp1 = ft_strdup(*str);
-		if (*s_str)
-		{
-			tmp2 = ft_strdup(*s_str);
-			free(*s_str);
-		}
-		*s_str = ft_strjoin(tmp2, tmp1);
-		if (tmp2)
-			free(tmp2);
-		if (tmp1)
-			free(tmp1);
-	}
-}
-
-static unsigned int	check_line(char *s_str)
+static unsigned int	check_line(char *buf)
 {
 	unsigned int i;
 
 	i = 0;
-	while (s_str[i] != '\0')
+	while (buf[i] != '\0')
 	{
-		if (s_str[i] == '\n')
+		if (buf[i] == '\n')
 		{
-			s_str[i] = '\0';
+			buf[i] = '\0';
 			return (i + 1);
 		}
 		i++;
@@ -52,52 +29,67 @@ static unsigned int	check_line(char *s_str)
 	return (i);
 }
 
-static int			return_line(char **str, char **s_str, char **line)
+static void			join_buf(char **buf2, char **buf)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	tmp = NULL;
+	tmp2 = NULL;
+	if (*buf2 && **buf2)
+	{
+		tmp2 = ft_strdup(*buf2);
+		if (*buf)
+		{
+			tmp = ft_strdup(*buf);
+			free(*buf);
+		}
+		*buf = ft_strjoin(tmp, tmp2);
+		if (tmp)
+			free(tmp);
+		if (tmp2)
+			free(tmp2);
+	}
+}
+
+static int			return_line(char **buf, char **buf2, char **line)
 {
 	unsigned int	i;
 	char			*tmp;
 
 	tmp = NULL;
-	i = check_line(*s_str);
-	*line = ft_strdup(*s_str);
-	tmp = ft_strdup(*s_str + i);
-	free(*s_str);
-	*s_str = tmp;
-	if (str)
-		free(*str), *str = NULL;
+	i = check_line(*buf);
+	*line = ft_strdup(*buf);
+	tmp = ft_strdup(*buf + i);
+	free(*buf);
+	*buf = tmp;
+	if (buf2)
+		free(*buf2), *buf2 = NULL;
 	return (1);
 }
 
-int					get_next_line(int fd, char **line)
-{	
-	int			ret;
-	char		*tmp;
-	static char	*s_tmp;
+int					get_next_line(int const fd, char **line)
+{
+	int				f;
+	char			*buf2;
+	static char		*buf = NULL;
 
-	tmp = NULL;
-	s_tmp = NULL;
-	if (fd <= 0 || (!(line)))
+	buf2 = NULL;
+	if (fd <= 0 || (!(line)) || BUFF_SIZE < 1)
 		return (-1);
-	if ((!(tmp = (char *) ft_memalloc(sizeof(*tmp) * BUFF_SIZE))))
+	if ((!(buf2 = (char*)malloc(sizeof(char) * BUFF_SIZE + 1))))
 		return (-1);
-	while (((ret = read(fd, tmp, BUFF_SIZE)) > 0) && (!(ft_strchr(tmp, '\n'))))
-	{
-		tmp[ret] = '\0';
-		append_line(&tmp, &s_tmp);
-	}
-	if (tmp && *tmp && ret > 0)
-	{
-		tmp[ret] = '\0';
-		append_line(&tmp, &s_tmp);
-	}
-	if (ret < 0)
+	while (((f = read(fd, buf2, BUFF_SIZE)) > 0) && (!(ft_strchr(buf2, '\n'))))
+		buf2[f] = '\0', join_buf(&buf2, &buf);
+	if (buf2 && *buf2 && f > 0)
+		buf2[f] = '\0', join_buf(&buf2, &buf);
+	if (f < 0)
 		return (-1);
-	if (s_tmp && s_tmp[0] != '\0')
-		return (return_line(&tmp, &s_tmp, line));
-	if (tmp)
-		free(tmp), tmp = NULL;
-	free(s_tmp);
-	s_tmp = NULL;
+	if (buf && buf[0] != '\0')
+		return (return_line(&buf, &buf2, line));
+	if (buf2)
+		free(buf2), buf2 = NULL;
+	free(buf), buf = NULL;
 	*line = NULL;
-	return 0;
+	return (0);
 }

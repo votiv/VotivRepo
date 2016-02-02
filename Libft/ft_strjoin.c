@@ -12,38 +12,66 @@
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static size_t	ft_lenjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
-	char	*ret;
+	size_t a;
+	size_t b;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	ret = (char *)ft_memalloc(sizeof(*s1) * len);
-	if (ret == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
+	a = 0;
+	b = 0;
 	if (s1 != NULL)
 	{
-		while (s1[j] != '\0')
+		while (s1[a] != '\0')
+			a++;
+	}
+	if (s2 != NULL)
+	{
+		while (s2[b] != '\0')
+			b++;
+	}
+	return (a + b);
+}
+
+static void		ft_strcpjoin(char const *s1, char const *s2, char *result)
+{
+	size_t a;
+	size_t i;
+
+	i = 0;
+	a = 0;
+	if (s1 != NULL)
+	{
+		while (s1[a] != '\0')
 		{
-			ret[i] = s1[j];
-			j++;
+			result[i] = s1[a];
+			a++;
 			i++;
 		}
 	}
 	if (s2 != NULL)
 	{
-		j = 0;
-		while (s2[j] != '\0')
+		a = 0;
+		while (s2[a] != '\0')
 		{
-			ret[i] = s2[j];
-			j++;
+			result[i] = s2[a];
+			a++;
 			i++;
 		}
-		ret[i] = '\0';
+		result[i] = '\0';
 	}
-	return (ret);
+}
+
+char			*ft_strjoin(char const *s1, char const *s2)
+{
+	char *result;
+
+	result = NULL;
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	if (s1 != NULL || s2 != NULL)
+	{
+		result = (char*)malloc(sizeof(char) * (ft_lenjoin(s1, s2)) + 1);
+		ft_strcpjoin(s1, s2, result);
+	}
+	return (result);
 }
