@@ -12,10 +12,15 @@ var app = express();
 var morgan = require('morgan');
 app.use(morgan('dev'));
 
+app.set('port', (process.env.PORT || 3500));
 app.use(express.static(path.join(__dirname, 'public')));
 
-var port = 3500;
+app.all('/*', function(request, response, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    response.sendFile('index.html', { root: __dirname });
+});
+
 var server = http.createServer(app);
-server.listen(port, function () {
-    console.log('Server listening to port: ' + port);
+server.listen(app.get('port'), function () {
+    console.log('Server listening to port: ' + app.get('port'));
 });
