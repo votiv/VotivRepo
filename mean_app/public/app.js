@@ -8,7 +8,7 @@ var meanApp = angular.module('meanApp', [
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'templates/home.html',
+				templateUrl: 'home/home.html',
 				controller: 'HomeController'
             })
             .state('about', {
