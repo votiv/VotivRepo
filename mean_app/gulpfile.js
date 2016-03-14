@@ -19,11 +19,12 @@ gulp.task('styles', function() {
 			.pipe(sass({outputStyle: 'compressed'}))
 			.pipe(autoprefixer({
 	            browsers: ['last 3 versions'],
-	            cascade: false
+	            cascade: false,
+	            debug: true
 	        }))	
-		.pipe(sourcemaps.write('Build/maps'))
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest('app/styles'))
-		.pipe(reload({stream:true}));
+		.pipe(gulp.dest(./build))
 });
 
 gulp.task('scripts', function () {
