@@ -9,11 +9,8 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-var morgan = require('morgan');
-app.use(morgan('dev'));
-
 app.set('port', (process.env.PORT || 3500));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app')));
 
 app.all('/*', function(request, response, next) {
     // Just send the index.html for other files to support HTML5Mode
