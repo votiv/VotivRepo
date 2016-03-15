@@ -8,23 +8,19 @@ var es = require('event-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+var rename = require('gulp-rename');
 
 
 
 gulp.task('styles', function() {
-	return gulp.src('styles/*.scss')
-			.pipe(sourcemaps.init())
-			.pipe(sass({outputStyle: 'compressed'}))
-			.pipe(autoprefixer({
-	            browsers: ['last 3 versions'],
-	            cascade: false,
-	            debug: true
-	        }))	
+	return gulp
+	    .src('./app/styles/main.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(sourcemaps.write('./maps'))
-		.pipe(gulp.dest('app/styles'))
-		.pipe(gulp.dest(./build))
+		.pipe(autoprefixer())
+		.pipe(rename('all.styles.css'))
+		.pipe(gulp.dest('./build'));
 });
 
 gulp.task('scripts', function () {
