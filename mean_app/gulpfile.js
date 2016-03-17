@@ -47,4 +47,4 @@ gulp.task('libraries', function() {
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task('default', ['scripts', 'libraries', 'styles']);
+gulp.task('default', ['scripts', 'styles']);

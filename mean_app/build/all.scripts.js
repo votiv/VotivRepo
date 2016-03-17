@@ -15,12 +15,12 @@ angular
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'public/home/home.html',
+				templateUrl: 'public/app/home/home.html',
 				controller: 'HomeController'
             })
             .state('about', {
                 url: '/about',
-                templateUrl: 'public/about/about.html'
+                templateUrl: 'public/app/about/about.html'
             });
 	}]);
 /**
@@ -28,7 +28,9 @@ angular
  */
 'use strict';
 
-meanApp.controller('HomeController', ['$scope', function ($scope) {
+angular
+    .module('meanApp')
+    .controller('HomeController', ['$scope', function ($scope) {
         $scope.date = new Date();
     }]);
 

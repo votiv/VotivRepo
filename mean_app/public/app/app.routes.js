@@ -9,11 +9,11 @@ angular
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'public/home/home.html',
+				templateUrl: 'public/app/home/home.html',
 				controller: 'HomeController'
             })
             .state('about', {
                 url: '/about',
-                templateUrl: 'public/about/about.html'
+                templateUrl: 'public/app/about/about.html'
             });
 	}]);
