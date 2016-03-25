@@ -33,18 +33,7 @@ gulp.task('scripts', function() {
 		.pipe(gulp.dest('./build'));
 });
 
-gulp.task('libraries', function() {
-
-    var source = [
-        'public/libraries/angular.min.js',
-        'public/libraries/angular-ui-router.min.js'
-    ];
-
-    return gulp.src(source)
-        .pipe(sourcemaps.init())
-        .pipe(concat('all.libraries.js'))
-        .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('./build'));
-});
-
 gulp.task('default', ['scripts', 'styles']);
+
+gulp.watch('public/app/**/*.js', ['scripts']);
+gulp.watch('public/styles/**/*.scss', ['styles']);

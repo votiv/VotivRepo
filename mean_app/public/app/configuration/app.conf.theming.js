@@ -1,36 +1,3 @@
-(function() {
-    'use strict';
-
-    angular
-        .module('meanApp', [
-            'ui.router',
-            'ngMaterial'
-        ]);
-})();
-(function () {
-    'use strict';
-
-    angular
-        .module('meanApp')
-        .config(routeConfig);
-
-
-    function routeConfig($urlRouterProvider, $stateProvider) {
-
-        $stateProvider
-            .state('home', {
-                url: '/',
-                templateUrl: 'public/app/home/home.html',
-                controller: 'HomeController'
-            })
-            .state('about', {
-                url: '/about',
-                templateUrl: 'public/app/about/about.html'
-            });
-
-        $urlRouterProvider.otherwise('/');
-    }
-})();
 /**
  * Created by votiv on 20/03/2016.
  */
@@ -70,26 +37,3 @@
             .primaryPalette('mainPalette')
     }
 })();
-/**
- * Created by viskyo on 28/01/2016.
- */
-(function() {
-    'use strict';
-
-    angular
-        .module('meanApp')
-        .controller('HomeController', ['$scope', function ($scope) {
-            $scope.date = new Date();
-        }]);
-
-})();
-'use strict';
-
-angular
-	.module('meanApp')
-	.controller('HomeController', ['$scope', function ($scope) {
-
-		$scope.date = new Date();
-	}]);
-
-//# sourceMappingURL=maps/all.scripts.js.map

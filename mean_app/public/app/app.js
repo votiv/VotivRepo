@@ -1,6 +1,9 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular
-	.module('meanApp', [
-		'ui.router'
-	]);
+    angular
+        .module('meanApp', [
+            'ui.router',
+            'ngMaterial'
+        ]);
+})();
