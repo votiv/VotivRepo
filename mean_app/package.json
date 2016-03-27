@@ -4,6 +4,11 @@
   "description": "Simple todo application.",
   "main": "server.js",
   "author": "votiv",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/votiv/VotivRepo.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "express": "~4.8.0",
     "mongoose": "~3.6.2",
@@ -14,6 +19,11 @@
     "gulp": "latest"
   },
   "devDependencies": {
+    "angular-animate": "^1.5.2",
+    "angular-aria": "^1.5.2",
+    "angular-material": "^1.0.6",
+    "angular-messages": "^1.5.2",
+    "angular-ui-router": "^0.2.18",
     "browser-sync": "^2.11.1",
     "event-stream": "latest",
     "gulp-autoprefixer": "^3.1.0",

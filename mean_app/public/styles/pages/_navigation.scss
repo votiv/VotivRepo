@@ -1,58 +1,11 @@
 .navigation-container {
     width: 100%;
     height: 75px;
-}
 
-.cyan-background {
-    width: 90%;
-    height: 100%;
-    box-shadow: 0 0 5px 0 #263238;
-    background-color: #00bcd4;
-    display: inline-block;
-}
+    .button {
 
-.white-background {
-    height: 100%;
-    width: 10%;
-    float: right;
-    background-color: #ffffff;
-    display: inline-block;
-}
 
-.navigation {
-    float: right;
-    width: auto;
-    height: 60px;
-    list-style-type: none;
-    overflow: hidden;
-    box-shadow: 5px 5px 6px -6px #263238;
-    position: relative;
-    top: -75px;
-}
 
-.button {
-    float: right;
-    display: inline;
-    height: 100%;
-    padding-top: 6px;
-    background-color: #b2ebf2;
-}
 
-.button a {
-    display: block;
-    height: 100%;
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    padding: 14px 16px;
-    color: rgb(8, 64, 129);
-}
-
-.button:hover {
-    background-color: #b2ebf2;
-}
-
-.button:active {
-    background-color: #4dd0e1;
+    }
 }
