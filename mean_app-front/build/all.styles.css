@@ -26247,5 +26247,7 @@ md-tooltip {
 .navigation-container {
   width: 100%;
   height: 75px; }
+  .navigation-container .white-background {
+    background: white; }
 
 /*# sourceMappingURL=maps/all.styles.css.map */
