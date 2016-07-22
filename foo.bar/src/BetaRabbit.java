@@ -10,13 +10,11 @@ public class BetaRabbit {
     private static int power = 0;
     private static int start = power;
     private static int weight = (int) Math.pow(3, power);
-    private static int left;
-    private static int right = 0;
 
     public static String[] answer(int x) {
 
-        left = x;
-        right = weight;
+        int left = x;
+        int right = weight;
 
         calcBack(left, right);
 
