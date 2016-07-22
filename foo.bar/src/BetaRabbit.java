@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by othniel.visky on 22.07.2016.
@@ -24,7 +22,7 @@ public class BetaRabbit {
     private static boolean calcBack(int left, int right) {
 
         if (left == right) {
-            makeString();
+//            makeString();
             return true;
         } else if (left < right) {
 
@@ -32,10 +30,12 @@ public class BetaRabbit {
             power = start++;
             weight = (int) Math.pow(3, power);
             right = weight;
+            calcBack(left, right);
         } else if (left > right) {
             power++;
             weight = (int) Math.pow(3, power);
             right += weight;
+            calcBack(left, right);
         }
         return false;
     }
