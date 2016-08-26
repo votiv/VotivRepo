@@ -8,6 +8,12 @@ public class MyAwesomeMain {
 
     public static void main(String[] args) {
 
-        System.out.println(Arrays.toString(BetaRabbit.answer(4)));
+//        String[] words = new String[]{"b", "dad", "dbe", "cdc"};
+//        String[] words = new String[]{"z", "yx", "yz"};
+//        String[] words = new String[]{"ba", "ab", "cb"};
+//        String[] words = new String[]{"y", "z", "xy"};
+        String[] words = new String[]{"c", "cac", "cb", "bcc", "ba"};
+
+        System.out.println(Minglish3.answer(words));
     }
 }
