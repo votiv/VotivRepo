@@ -1,3 +1,4 @@
+<<<<<<< 3bf3c41d0a2669bbabd7e1cea15155307a10cf4c
 <div class="home-container">
     <div> Hello my first full stack application! Have some current date: {{hc.date | date:'yyyy-MM-dd'}}</div>
 
@@ -13,3 +14,26 @@
         </div>
     </md-content>
 </div>
+=======
+<div class="home-container">
+    <div> Hello my first full stack application! Have some current date: {{hc.date | date:'yyyy-MM-dd'}}</div>
+
+    <md-button class="md-accent">This button</md-button>
+
+    <md-content>
+        <div class="text-file-content">
+            <input type="file" text-from-file="hc.showContent($fileContent)" />
+            <div ng-if="hc.content">
+                <h2>File content is:</h2>
+                <pre>{{ hc.content }}</pre>
+            </div>
+        </div>
+    </md-content>
+
+    <md-content>
+        <div>
+            {{ hc.books }}
+        </div>
+    </md-content>
+</div>
+>>>>>>> message

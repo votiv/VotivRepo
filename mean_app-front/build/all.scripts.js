@@ -1,3 +1,4 @@
+<<<<<<< 3bf3c41d0a2669bbabd7e1cea15155307a10cf4c
 (function() {
     'use strict';
 
@@ -178,3 +179,169 @@
 	}
 })();
 //# sourceMappingURL=maps/all.scripts.js.map
+=======
+/**
+ * Created by votiv on 28/04/2016.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('meanApp')
+        .config(configuration);
+
+    configuration.$inject = [/*'$restangularProvider'*/];
+
+    function configuration(/*$restangularProvider*/) {
+
+        // $restangularProvider.setBaseUrl('localhost:3500/');
+    }
+})();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('meanApp', [
+            'ui.router',
+            'ngMaterial',
+            'restangular'
+        ]);
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('meanApp')
+        .config(routeConfig);
+
+    function routeConfig($urlRouterProvider, $stateProvider) {
+
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'public/app/home/home.html',
+                controller: 'HomeController',
+                controllerAs: 'hc'
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'public/app/about/about.html'
+            });
+
+        $urlRouterProvider.otherwise('/');
+    }
+})();
+/**
+ * Created by votiv on 20/03/2016.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('meanApp')
+        .config(theme);
+
+
+    function theme($mdThemingProvider) {
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('orange')
+            .accentPalette('deep-orange')
+            .backgroundPalette('grey');
+    }
+})();
+/**
+ * Created by votiv on 10/04/2016.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('meanApp')
+        .directive('textFromFile', textFromFile);
+
+    textFromFile.$inject = ['$parse'];
+
+    function textFromFile($parse) {
+
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function(scope, element, attrs) {
+                console.log('scope', scope, 'element', element, 'attr', attrs);
+                var fn = $parse(attrs.textFromFile);
+
+                element.on('change', function(onChangeEvent) {
+                    var reader = new FileReader();
+                    console.log('on change event', onChangeEvent);
+                    reader.onload = function(onLoadEvent) {
+                        console.log('on load', onLoadEvent);
+                        scope.$apply(function() {
+                            fn(scope, {$fileContent: onLoadEvent.target.result});
+                        });
+                    };
+
+                    reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                });
+            }
+        }
+    }
+})();
+
+/**
+ * Created by votiv on 28/04/2016.
+ */
+(function() {
+    'use strict';
+
+    angular
+        .module('meanApp')
+        .factory('booksService', booksService);
+
+    booksService.$inject = ['Restangular'];
+
+    function booksService(Restangular) {
+
+        return {
+            getBooks: getBooks
+        };
+
+        function getBooks() {
+            // return Restangular.service('books');
+        }
+    }
+})();
+
+/**
+ * Created by viskyo on 28/01/2016.
+ */
+(function() {
+	'use strict';
+
+	angular
+		.module('meanApp')
+		.controller('HomeController', HomeController);
+
+	HomeController.$inject = [/*'Books'*/];
+
+	function HomeController(/*Books*/) {
+
+		var hc = this;
+
+		hc.date = new Date();
+
+		// Books.getList()
+         //    .then(function(books) {
+         //        console.log(books);
+         //        hc.books = books;
+         //    });
+
+        hc.showContent = function($fileContent) {
+            console.log('content', hc.content);
+            hc.content = $fileContent;
+        };
+	}
+})();
+//# sourceMappingURL=maps/all.scripts.js.map
+>>>>>>> message
