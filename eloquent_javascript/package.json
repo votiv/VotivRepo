@@ -1,0 +1,11 @@
+{
+  "name": "eloquent_javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "votiv",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jasmine-node": "^1.15.0"
+  }
+}
